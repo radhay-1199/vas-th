@@ -62,10 +62,11 @@ public class ControlService {
 
 	}
 
-	public String MTService(String msisdn, String trx_id, String session_id, String shortcode, String telco,String message, String price, String service, String subject, String content_type)throws URISyntaxException {
+	public String MTService(String msisdn, String trx_id, String session_id, String shortcode, String telco,String message, String price, String service, String subject, String content_type)throws URISyntaxException, UnsupportedEncodingException {
 		logger.info("creating mt url where msisdn="+msisdn);
+		message=message+Base64.getEncoder().encodeToString(msisdn.getBytes("utf-8"));
 		URI mtURI = new URI(value.getMt_url()+"?msisdn="+msisdn+"&trx_id="+"&session_id="+"&shortcode="+shortcode+"&telco="
-		+telco+"&message="+message+"&price=+"+price+"&service="+service+"&subject="+subject+"&content_type="+content_type);
+		+telco+"&message="+message+"&price="+price+"&service="+service+"&subject="+subject+"&content_type="+content_type);
 		logger.info("sending mt URI: "+mtURI);
 		ResponseEntity<String> mtResponse = restTemplate.getForEntity(mtURI, String.class);
 		String mt = mtResponse.getBody();

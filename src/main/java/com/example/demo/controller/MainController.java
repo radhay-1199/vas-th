@@ -147,9 +147,9 @@ public class MainController {
 				subscribedUsersDetailsService.subscribedUsersDetailsInfo(msisdn, session_id,value.getProductId());
 				logger.info("inserting into com_subscribed_users");
 				subscribedUsersSerivice.subscribedUserInfo(msisdn);
-				message=message+Base64.getEncoder().encodeToString(msisdn.getBytes("utf-8"));	
+				//message=message+Base64.getEncoder().encodeToString(msisdn.getBytes("utf-8"));	
 				logger.info("pushing MT url");
-				controlService.MTService(msisdn,trx_id,session_id,shortcode,telco,message,value.getPrice(),value.getService(),value.getSubject(),value.getContent_type());
+				controlService.MTService(msisdn,trx_id,session_id,shortcode,telco,message,value.getMtPrice(),value.getService(),value.getSubject(),value.getContent_type());
 			}
 			if("ALERT;REG;01".equals(subject) && status.equals("REJECTED")) {
 				transactionservice.updateCgStatus(session_id);

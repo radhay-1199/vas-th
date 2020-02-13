@@ -85,7 +85,7 @@ public class TransactionDao {
 	public int updateBillingTransaction(Transaction t) {
 		try {
 			logger.info("updating after DR in table com_transaction");
-			String query="update com_transaction set requested_price="+t.getRequestedPrice()+",session_id='"+t.getSessionId()+"'billing_status='PENDD'"+"where transaction_id="+t.getTransactionId()+"and msisdn='"+t.getMsisdn()+"'";
+			String query="update com_transaction set requested_price="+t.getRequestedPrice()+",billing_status='PENDD' where session_id="+t.getSessionId()+" and msisdn='"+t.getMsisdn()+"'";
 			logger.info("query: "+query);
 			jdbcTemplate.execute(query);
 			logger.info("updated billing transaction");
@@ -145,7 +145,7 @@ public class TransactionDao {
 			String sessionId) {
 		try {
 			logger.info("Inserting transaction entry during renewal in com_transaction table");
-			String query="insert into com_transaction(subscribedUserId,msisdn,pack_id,product_id,transaction_unique_id,requested_price,cg_status,cg_status_code,billing_status,interface,publisher,session_id) "
+			String query="insert into com_transaction(subscribed_user_id,msisdn,pack_id,product_id,transaction_unique_id,requested_price,cg_status,cg_status_code,billing_status,interface,publisher,session_id) "
 					+ "values("+subscribedUserId+",'"+msisdn+"',"+packId+",'"+productId+"','"+transactionUniqueId+"',"+requestedPrice+",'"
 					+cgStatus+"','"+cgStatusCode+"','"+billingStatus+"','"+interfacee+"','"+publisher+"','"+sessionId+"')";
 			logger.info("query: "+query);

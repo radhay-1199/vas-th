@@ -102,7 +102,8 @@ public class SubscribedUsersDetailsDao {
 	}
 	
 	public List<SubscribedUsersDetails> getAllSubscribers(){ 
-		String query ="select msisdn from com_subscribed_users_details where status=1 and exp_date>=CURRENT_TIMESTAMP() and publisher='"+value.getPublisher()+"'";
+		String query ="select distinct(msisdn) from com_subscribed_users_details where status=1 and exp_date>=CURRENT_TIMESTAMP() and publisher='"+value.getPublisher()+"'";
+		logger.info("query"+query);
 		 return jdbcTemplate.query(query,new ResultSetExtractor<List<SubscribedUsersDetails>>(){  
 		    @Override  
 		     public List<SubscribedUsersDetails> extractData(ResultSet rs) throws SQLException,  

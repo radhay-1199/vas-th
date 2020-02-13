@@ -30,7 +30,7 @@ public class BillingResponseDao {
 	public int insertdetails(BillingResponse b) {
 		try {
 			logger.info("inserting into table com_billing_response");
-			String query="insert into com_billing_response(calling_party,service_id,service_type,requestedPlan,sequenceno,chargeAmount,appliedPlan,discountPlan,validityDays,operationId,createdon,bearerId,errorcode,result,contentId,category,optParam1,optParam2,optParam3,optParam4,optParam5,same_day_churn,biller_id,action,publisher) "
+			String query="insert into com_billing_response(calling_party,serviceId,serviceType,requestPlan,sequenceNo,chargeAmount,appliedPlan,discountPlan,validityDays,operationId,createdon,bearerId,errorCode,result,contentId,category,optParam1,optParam2,optParam3,optParam4,optParam5,same_day_churn,biller_id,action,publisher) "
 					+"values(?,?,?,?,?,?,?,?,?,?,"+b.getCreatedon()+",?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			logger.info("query: "+query);
 			KeyHolder keyHolder = new GeneratedKeyHolder();

@@ -51,7 +51,13 @@ public class Values {
 	private String mt_url;
 	@Value("${productId}")
 	private String productId;
+	@Value("${mtPrice}")
+	private String mtPrice;
 	
+	public String getMtPrice() {
+		return mtPrice;
+	}
+
 	public String getProductId() {
 		return productId;
 	}

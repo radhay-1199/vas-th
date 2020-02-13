@@ -29,10 +29,10 @@ public class RenewalService {
 	public int renewalForSubscribedUsers() throws URISyntaxException, UnsupportedEncodingException{
 		logger.info("getting list of subscribed users for renewal");
 		List<SubscribedUsersDetails> list=subscribedUsersDetailsDao.getAllSubscribers();
-		logger.info("saved subscriber details inside the list");
+		logger.info("saving subscriber details inside the list"+list);
 		for(SubscribedUsersDetails temp : list) {
 			logger.info("pushing renewal mt to subscribed users");
-			controlService.renewalService(temp.getMsisdn(), value.getShortcode(), value.getTelco(), value.getMessage(), value.getPrice(), value.getService(), value.getContent_type());
+			controlService.renewalService(temp.getMsisdn(), value.getShortcode(), value.getTelco(), value.getMessage(), value.getMtPrice(), value.getService(), value.getContent_type());
 			logger.info("mt pushed for renewal of service for subscribed users");
 		}
 		return 1;
