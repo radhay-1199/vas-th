@@ -90,7 +90,7 @@ public class ControlService {
 		logger.info("response from MT url for remewal: "+mt);
 		logger.info("Inserting Renewal Transaction details into com_transaction table");
 		transactionService.insertRenwalTransaction(arrayOfResponseBody[1],msisdn);
-		logger.info("inserting into com_billing_response for remewal");
+		logger.info("inserting into com_billing_response for renewal");
 		billingResponseService.billingResponseInfo(msisdn);
 		return mt;
 	}
